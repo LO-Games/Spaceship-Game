@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,3 +26,4 @@ public class DestroyOnTrigger2D : MonoBehaviour {
         /* Just to show the enabled checkbox in Editor */
     }
 }
+
