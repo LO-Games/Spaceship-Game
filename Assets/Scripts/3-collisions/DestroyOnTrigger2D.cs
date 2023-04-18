@@ -9,21 +9,18 @@ public class DestroyOnTrigger2D : MonoBehaviour {
     [Tooltip("Every object tagged with this tag will trigger the destruction of this object")]
     [SerializeField] string triggeringTag;
     [SerializeField] public GameObject [] piecesOfSpaceship;
+    [SerializeField] Vector2 randomForceRange = new Vector2(-10f, 10f);
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == triggeringTag && enabled) {
             foreach (GameObject piecePrefab in piecesOfSpaceship) {
                 GameObject piece = Instantiate(piecePrefab, transform.position, Quaternion.identity);
                 Rigidbody2D rb = piece.GetComponent<Rigidbody2D>();
-                rb.AddForce(new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)), ForceMode2D.Impulse);
-            }       
+                Vector2 randomForce = new Vector2(Random.Range(randomForceRange.x, randomForceRange.y), Random.Range(randomForceRange.x, randomForceRange.y));
+                rb.AddForce(randomForce, ForceMode2D.Impulse);            }       
             Destroy(this.gameObject);
             Destroy(other.gameObject);
         }
-    }
-
-    private void Update() {
-        /* Just to show the enabled checkbox in Editor */
     }
 }
 

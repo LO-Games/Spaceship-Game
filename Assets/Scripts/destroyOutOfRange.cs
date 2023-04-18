@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class destroyOutOfRange : MonoBehaviour
 {
+    [SerializeField] float destroyThreshold = -10f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +15,7 @@ public class destroyOutOfRange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y < -10){
+       if(transform.position.y < destroyThreshold){
             Destroy(gameObject);
         }
     }
