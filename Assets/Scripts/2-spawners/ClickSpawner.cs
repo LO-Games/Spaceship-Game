@@ -11,6 +11,7 @@ public class ClickSpawner: MonoBehaviour {
     [SerializeField] protected InputAction spawnAction = new InputAction(type: InputActionType.Button);
     [SerializeField] protected GameObject prefabToSpawn;
     [SerializeField] protected Vector3 velocityOfSpawnedObject;
+    private const float TimeBetweenShootings = 0.5f;
     private bool canShoot = true;
 
     void OnEnable()  {
@@ -38,7 +39,7 @@ public class ClickSpawner: MonoBehaviour {
     }
 
       IEnumerator WaitBetweenShootings(){
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(TimeBetweenShootings);
         canShoot = true;
     }
 
